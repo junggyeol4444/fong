@@ -1,0 +1,38 @@
+{
+  "crawl_examples": {
+    "single_video": "python music_creator.py crawl 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' --genre pop",
+    "playlist": "python music_creator.py crawl 'https://www.youtube.com/playlist?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG' --playlist --genre rock --max-count 5",
+    "resume": "python music_creator.py crawl 'PLAYLIST_URL' --resume --genre pop"
+  },
+  "analyze_examples": {
+    "lyrics": "python music_creator.py analyze lyrics data/raw/video_id_lyrics.txt",
+    "music": "python music_creator.py analyze music data/raw/video_id.mp3 --extract-chords"
+  },
+  "generate_examples": {
+    "lyrics": {
+      "pop_love": "python music_creator.py generate lyrics --genre pop --theme love --rhyme-scheme ABAB --num-verses 2",
+      "rock_rebellion": "python music_creator.py generate lyrics --genre rock --theme rebellion --rhyme-scheme AABB",
+      "hiphop_success": "python music_creator.py generate lyrics --genre hip_hop --theme success --rhyme-scheme FREE"
+    },
+    "music": {
+      "pop_song": "python music_creator.py generate music --genre pop --key C --bpm 120 --duration 32",
+      "rock_song": "python music_creator.py generate music --genre rock --key D --bpm 140 --duration 64",
+      "blues_song": "python music_creator.py generate music --genre blues --key G --bpm 80 --duration 48"
+    }
+  },
+  "synthesize_examples": {
+    "lyrics_to_voice": "python music_creator.py synthesize lyrics --lyrics-file data/generated/pop_love_lyrics.txt",
+    "with_voice_cloning": "python music_creator.py synthesize lyrics --lyrics-file data/generated/lyrics.txt --speaker-wav reference_voice.wav",
+    "complete_song": "python music_creator.py synthesize song --lyrics-file data/generated/lyrics.txt --midi-file data/generated/music.mid"
+  },
+  "full_workflow": [
+    "# Step 1: Generate lyrics",
+    "python music_creator.py generate lyrics --genre pop --theme freedom --num-verses 2",
+    "",
+    "# Step 2: Generate music",
+    "python music_creator.py generate music --genre pop --key C --bpm 120",
+    "",
+    "# Step 3: Create complete song",
+    "python music_creator.py synthesize song --lyrics-file data/generated/pop_freedom_lyrics.txt --midi-file data/generated/pop_C_120bpm.mid"
+  ]
+}

@@ -1,0 +1,66 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data directories (can be large)
+data/raw/*
+!data/raw/.gitkeep
+data/analyzed/*
+!data/analyzed/.gitkeep
+data/generated/*
+!data/generated/.gitkeep
+
+# Progress tracking
+progress.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Audio/Video files
+*.mp3
+*.mp4
+*.wav
+*.flac
+*.ogg
+*.m4a
+*.webm
+
+# MIDI files (optional - remove if you want to commit them)
+*.mid
+*.midi
+
+# Model files
+*.pth
+*.pt
+*.ckpt
+*.bin
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Distribution
+dist/
+build/
+*.egg-info/

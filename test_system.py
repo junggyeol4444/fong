@@ -70,6 +70,7 @@ def test_music_generation():
     """Test MIDI music generation."""
     print(f"\n{Fore.CYAN}Testing music generation...{Style.RESET_ALL}")
     
+    midi_file = None
     try:
         from src.generation.music_generator import MusicGenerator
         import os
@@ -86,10 +87,6 @@ def test_music_generation():
         if os.path.exists(midi_file):
             print(f"  {Fore.GREEN}✓{Style.RESET_ALL} MIDI file generated successfully")
             print(f"  Location: {midi_file}")
-            
-            # Clean up test file
-            os.remove(midi_file)
-            print(f"  Test file cleaned up")
             return True
         else:
             print(f"  {Fore.RED}✗{Style.RESET_ALL} MIDI file not created")
@@ -98,6 +95,14 @@ def test_music_generation():
     except Exception as e:
         print(f"  {Fore.RED}✗{Style.RESET_ALL} Error: {str(e)}")
         return False
+    finally:
+        # Clean up test file
+        if midi_file and os.path.exists(midi_file):
+            try:
+                os.remove(midi_file)
+                print(f"  Test file cleaned up")
+            except Exception:
+                pass
 
 
 def test_lyrics_analysis():

@@ -32,9 +32,10 @@ if not exist "venv\" (
     python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('averaged_perceptron_tagger', quiet=True)"
     
     echo Setup complete!
-) else (
-    call venv\Scripts\activate.bat
 )
+
+REM Always activate virtual environment
+call venv\Scripts\activate.bat
 
 REM Run the Auto Music Creator with all arguments
 python music_creator.py %*

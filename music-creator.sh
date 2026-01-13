@@ -35,7 +35,7 @@ fi
 source venv/bin/activate
 
 # Run the Auto Music Creator with all arguments
-python3 music_creator.py "$@"
+python music_creator.py "$@"
 
 # Exit with the same code as the Python script
 exit $?

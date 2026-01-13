@@ -52,9 +52,8 @@ python3 -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('aver
 echo "✓ NLTK data downloaded"
 echo ""
 
-# Make launcher scripts executable
+# Make launcher script executable
 chmod +x music-creator.sh
-chmod +x install.sh
 
 echo "════════════════════════════════════════════════════════════"
 echo "✅ Installation complete!"

@@ -9,6 +9,7 @@ venv/
 env/
 ENV/
 .venv
+.virtualenv/
 
 # IDE
 .vscode/

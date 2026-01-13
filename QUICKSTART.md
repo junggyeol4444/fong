@@ -2,6 +2,32 @@
 
 ## Installation
 
+### Option 1: Easy Installation (Recommended)
+
+**For Linux/Mac:**
+```bash
+# 1. Clone the repository
+git clone https://github.com/junggyeol4444/fong.git
+cd fong
+
+# 2. Run installation script
+./install.sh
+```
+
+**For Windows:**
+```cmd
+REM 1. Clone the repository
+git clone https://github.com/junggyeol4444/fong.git
+cd fong
+
+REM 2. Run installation script
+install.bat
+```
+
+The installation script will automatically set up everything for you!
+
+### Option 2: Manual Installation
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/junggyeol4444/fong.git
@@ -19,6 +45,28 @@ python -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptr
 ```
 
 ## Quick Test
+
+### Using Executable Scripts (Easiest)
+
+**For Linux/Mac:**
+```bash
+# Generate lyrics
+./music-creator.sh generate lyrics --genre pop --theme love --num-verses 2
+
+# Generate music
+./music-creator.sh generate music --genre pop --key C --bpm 120
+```
+
+**For Windows:**
+```cmd
+REM Generate lyrics
+music-creator.bat generate lyrics --genre pop --theme love --num-verses 2
+
+REM Generate music
+music-creator.bat generate music --genre pop --key C --bpm 120
+```
+
+### Using Python Directly
 
 ### 1. Generate Lyrics (No external dependencies)
 

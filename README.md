@@ -61,6 +61,30 @@ The Auto Music Creator is a comprehensive system designed to generate music auto
 
 ### Setup
 
+#### Option 1: Easy Installation (Recommended)
+
+**For Linux/Mac:**
+```bash
+git clone https://github.com/junggyeol4444/fong.git
+cd fong
+./install.sh
+```
+
+**For Windows:**
+```cmd
+git clone https://github.com/junggyeol4444/fong.git
+cd fong
+install.bat
+```
+
+The installation script will automatically:
+- Check Python installation
+- Create a virtual environment
+- Install all dependencies
+- Download required NLTK data
+
+#### Option 2: Manual Installation
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/junggyeol4444/fong.git
@@ -73,71 +97,97 @@ pip install -r requirements.txt
 ```
 
 3. Download NLTK data (first time only):
-```python
+```bash
 python -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
 ```
 
 ## Usage
 
-The system provides a command-line interface with four main commands:
+The system provides a command-line interface with four main commands.
+
+### Running the Program
+
+**For Linux/Mac** (using shell script):
+```bash
+./music-creator.sh [command] [options]
+```
+
+**For Windows** (using batch file):
+```cmd
+music-creator.bat [command] [options]
+```
+
+**For all platforms** (direct Python):
+```bash
+python music_creator.py [command] [options]
+```
 
 ### 1. Crawl YouTube Music
 
 Download a single video:
 ```bash
+# Linux/Mac
+./music-creator.sh crawl "https://www.youtube.com/watch?v=VIDEO_ID" --genre pop
+
+# Windows
+music-creator.bat crawl "https://www.youtube.com/watch?v=VIDEO_ID" --genre pop
+
+# Direct Python
 python music_creator.py crawl "https://www.youtube.com/watch?v=VIDEO_ID" --genre pop
 ```
 
 Download a playlist:
 ```bash
-python music_creator.py crawl "https://www.youtube.com/playlist?list=PLAYLIST_ID" --playlist --genre rock --max-count 10
+./music-creator.sh crawl "https://www.youtube.com/playlist?list=PLAYLIST_ID" --playlist --genre rock --max-count 10
 ```
 
 Resume previous crawl:
 ```bash
-python music_creator.py crawl "PLAYLIST_URL" --resume --genre pop
+./music-creator.sh crawl "PLAYLIST_URL" --resume --genre pop
 ```
 
 ### 2. Analyze Music Data
 
 Analyze lyrics:
 ```bash
-python music_creator.py analyze lyrics data/raw/VIDEO_ID_lyrics.txt
+./music-creator.sh analyze lyrics data/raw/VIDEO_ID_lyrics.txt
 ```
 
 Analyze music:
 ```bash
-python music_creator.py analyze music data/raw/VIDEO_ID.mp3 --extract-chords
+./music-creator.sh analyze music data/raw/VIDEO_ID.mp3 --extract-chords
 ```
 
 ### 3. Generate Content
 
 Generate lyrics:
 ```bash
-python music_creator.py generate lyrics --genre pop --theme love --rhyme-scheme ABAB --num-verses 3
+./music-creator.sh generate lyrics --genre pop --theme love --rhyme-scheme ABAB --num-verses 3
 ```
 
 Generate music:
 ```bash
-python music_creator.py generate music --genre rock --key D --bpm 140 --duration 64
+./music-creator.sh generate music --genre rock --key D --bpm 140 --duration 64
 ```
 
 ### 4. Synthesize Voice
 
 Synthesize lyrics to voice:
 ```bash
-python music_creator.py synthesize lyrics --lyrics-file data/generated/pop_love_lyrics.txt
+./music-creator.sh synthesize lyrics --lyrics-file data/generated/pop_love_lyrics.txt
 ```
 
 Create complete song:
 ```bash
-python music_creator.py synthesize song --lyrics-file data/generated/lyrics.txt --midi-file data/generated/music.mid
+./music-creator.sh synthesize song --lyrics-file data/generated/lyrics.txt --midi-file data/generated/music.mid
 ```
 
 Use voice cloning:
 ```bash
-python music_creator.py synthesize lyrics --lyrics-file lyrics.txt --speaker-wav reference_voice.wav
+./music-creator.sh synthesize lyrics --lyrics-file lyrics.txt --speaker-wav reference_voice.wav
 ```
+
+**Note:** Replace `./music-creator.sh` with `music-creator.bat` on Windows or `python music_creator.py` for direct Python execution.
 
 ## Project Structure
 
@@ -161,7 +211,11 @@ fong/
 │   ├── analyzed/         # Analysis results
 │   ├── generated/        # Generated content
 │   └── templates/        # Lyric templates
-├── music_creator.py      # Main entry point
+├── music_creator.py      # Main entry point (Python)
+├── music-creator.sh      # Launcher script (Linux/Mac)
+├── music-creator.bat     # Launcher script (Windows)
+├── install.sh            # Installation script (Linux/Mac)
+├── install.bat           # Installation script (Windows)
 ├── requirements.txt      # Python dependencies
 └── README.md
 ```
@@ -170,22 +224,29 @@ fong/
 
 Complete workflow from data collection to song creation:
 
+**Using shell script (Linux/Mac):**
 ```bash
 # 1. Collect music data
-python music_creator.py crawl "PLAYLIST_URL" --playlist --genre pop --max-count 5
+./music-creator.sh crawl "PLAYLIST_URL" --playlist --genre pop --max-count 5
 
 # 2. Analyze collected data
-python music_creator.py analyze lyrics data/raw/VIDEO_ID_lyrics.txt
-python music_creator.py analyze music data/raw/VIDEO_ID.mp3
+./music-creator.sh analyze lyrics data/raw/VIDEO_ID_lyrics.txt
+./music-creator.sh analyze music data/raw/VIDEO_ID.mp3
 
 # 3. Generate new content
-python music_creator.py generate lyrics --genre pop --theme freedom --num-verses 2
-python music_creator.py generate music --genre pop --key C --bpm 120
+./music-creator.sh generate lyrics --genre pop --theme freedom --num-verses 2
+./music-creator.sh generate music --genre pop --key C --bpm 120
 
 # 4. Create final song
-python music_creator.py synthesize song \
+./music-creator.sh synthesize song \
   --lyrics-file data/generated/pop_freedom_lyrics.txt \
   --midi-file data/generated/pop_C_120bpm.mid
+```
+
+**Using batch file (Windows):**
+```cmd
+REM Replace ./music-creator.sh with music-creator.bat in all commands above
+music-creator.bat generate lyrics --genre pop --theme freedom --num-verses 2
 ```
 
 ## Configuration
